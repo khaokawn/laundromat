@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.box-card {
+  background-color: #6495ED;
+  border-radius: 16px;
+  color: white;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+/* Dialog */
+@media only screen and (min-width: 1024px) {
+  .dialog-box  {
+    width: '40%'
+  }
+}
