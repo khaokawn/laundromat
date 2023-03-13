@@ -115,9 +115,9 @@ function App() {
 
     return () => clearInterval(tick2.current);
   }, [start2]);
-
+  
   const toggleStart2 = () => {
-    setTimer2(5)
+    setTimer2(65)
     setPaid2(true)
     setStart2(true)
   };
