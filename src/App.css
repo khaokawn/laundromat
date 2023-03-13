@@ -49,9 +49,35 @@
   border: none;
 }
 
+@media only screen and (max-width: 1024px) {
+  .box-web {
+    padding: 20px;
+    text-align: -webkit-center;
+  }
+
+  .screen-mobile {
+    background-color: rgb(248, 249, 250);
+    padding: 10%;
+    height: auto;
+  }
+}
+
 /* Dialog */
 @media only screen and (min-width: 1024px) {
   .dialog-box  {
     width: '40%'
+  }
+
+  .box-mobile {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .screen-web {
+    background-color: rgb(248, 249, 250);
+    padding: 10%;
+    height: 100vh;
   }
 }

@@ -115,7 +115,7 @@ function App() {
 
     return () => clearInterval(tick2.current);
   }, [start2]);
-  
+
   const toggleStart2 = () => {
     setTimer2(65)
     setPaid2(true)
@@ -136,7 +136,7 @@ function App() {
   };
 
   return (
-    <div style={{ backgroundColor: 'rgb(248, 249, 250)', padding: '10%', height: '100vh' }}>
+    <div className="screen-web screen-mobile">
       <div className="container" style={{ backgroundColor: 'white', padding: '30px', borderRadius: '20px' }}>
         <div className="row justify-content-center">
           <div
@@ -188,7 +188,7 @@ function App() {
           </Dialog>
 
           {/* row 1 */}
-          <div style={{ display: 'flex', gap: '100px', justifyContent: 'center', padding: '20px' }}>
+          <div className="box-mobile box-web">
             <div>
               <Button className="box-card" onClick={() => setWashingMachine1(true)} disabled={paid === true}>
                 { paid === true ? 'Not available' : 'Available' }
