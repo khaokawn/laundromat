@@ -136,7 +136,7 @@ function App() {
   };
 
   return (
-    <div className="screen-web screen-mobile">
+    <div className="bg-gray">
       <div className="container" style={{ backgroundColor: 'white', padding: '30px', borderRadius: '20px' }}>
         <div className="row justify-content-center">
           <div
@@ -188,7 +188,7 @@ function App() {
           </Dialog>
 
           {/* row 1 */}
-          <div className="box-mobile box-web">
+          <div className="display-content">
             <div>
               <Button className="box-card" onClick={() => setWashingMachine1(true)} disabled={paid === true}>
                 { paid === true ? 'Not available' : 'Available' }

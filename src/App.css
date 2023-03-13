@@ -49,33 +49,40 @@
   border: none;
 }
 
-@media only screen and (max-width: 1024px) {
-  .box-web {
+@media only screen and (min-width: 320px) {
+  .display-content {
     padding: 20px;
     text-align: -webkit-center;
   }
 
-  .screen-mobile {
+  .bg-gray {
     background-color: rgb(248, 249, 250);
     padding: 10%;
     height: auto;
   }
 }
 
-/* Dialog */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
+  .bg-gray {
+    background-color: rgb(248, 249, 250);
+    padding: 10%;
+    height: 100vh;
+  }
+}
+
+@media only screen and (min-width: 992px) {
   .dialog-box  {
     width: '40%'
   }
 
-  .box-mobile {
+  .display-content {
     display: flex;
     gap: 100px;
     justify-content: center;
     padding: 20px;
   }
 
-  .screen-web {
+  .bg-gray {
     background-color: rgb(248, 249, 250);
     padding: 10%;
     height: 100vh;
