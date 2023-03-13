@@ -157,12 +157,15 @@ function App() {
           </div>
 
           <Toast ref={toast} position="top-center" />
+          
           <Dialog 
             header="Washing Machine 1"
             visible={WashingMachine1}
             className='dialog-box'
             onHide={() => setWashingMachine1(false)}
             footer={footerContent}
+            dismissableMask={true}
+            draggable={false}
           >
             <div>
               <div style={{ textAlign: 'center', margin: '2%' }}>
@@ -178,6 +181,8 @@ function App() {
             className='dialog-box'
             onHide={() => setWashingMachine2(false)}
             footer={footerContent2}
+            dismissableMask={true}
+            draggable={false}
           >
             <div>
               <div style={{ textAlign: 'center', margin: '2%' }}>
