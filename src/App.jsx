@@ -9,12 +9,21 @@ import { Toast } from 'primereact/toast';
 
 function App() {
   const [paid, setPaid] = useState(false);
+  const [paid2, setPaid2] = useState(false);
   const [WashingMachine1, setWashingMachine1] = useState(false);
+  const [WashingMachine2, setWashingMachine2] = useState(false);
 
   const footerContent = (
     <div>
       <Button label="Cancel" onClick={() => setWashingMachine1(false)} className="p-button-text" />
       <Button label="Next" onClick={() => setWashingMachine1(false)} autoFocus disabled={paid === false} />
+    </div>
+  );
+
+  const footerContent2 = (
+    <div>
+      <Button label="Cancel" onClick={() => setWashingMachine2(false)} className="p-button-text" />
+      <Button label="Next" onClick={() => setWashingMachine2(false)} autoFocus disabled={paid2 === false} />
     </div>
   );
 
@@ -51,6 +60,11 @@ function App() {
   const firstStart = useRef(true);
   const tick = useRef();
 
+  const [timer2, setTimer2] = useState('');
+  const [start2, setStart2] = useState(false);
+  const firstStart2 = useRef(true);
+  const tick2 = useRef();
+
   useEffect(() => {
     if (firstStart.current) {
       firstStart.current = !firstStart.current;
@@ -79,6 +93,41 @@ function App() {
     if (mins <= 0 && seconds_ <= 0) {
       showSuccess()
       return setPaid(false)
+    }
+    if (mins && seconds_ === 0) {
+      showAlert()
+    }
+    return mins.toString() + " : " + (seconds_ < 10 ? "0" + seconds_.toString() : seconds_.toString());
+  };
+
+  useEffect(() => {
+    if (firstStart2.current) {
+      firstStart2.current = !firstStart2.current;
+      return;
+    }
+    if (start2) {
+      tick2.current = setInterval(() => {
+        setTimer2((timer2) => timer2 - 1);
+      }, 1000);
+    } else {
+      clearInterval(tick2.current);
+    }
+
+    return () => clearInterval(tick2.current);
+  }, [start2]);
+
+  const toggleStart2 = () => {
+    setTimer2(5)
+    setPaid2(true)
+    setStart2(true)
+  };
+
+  const dispSecondsAsMins2 = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const seconds_ = seconds % 60;
+    if (mins <= 0 && seconds_ <= 0) {
+      showSuccess()
+      return setPaid2(false)
     }
     if (mins && seconds_ === 0) {
       showAlert()
@@ -123,6 +172,21 @@ function App() {
             </div>
           </Dialog>
 
+          <Dialog 
+            header="Washing Machine 2"
+            visible={WashingMachine2}
+            className='dialog-box'
+            onHide={() => setWashingMachine2(false)}
+            footer={footerContent2}
+          >
+            <div>
+              <div style={{ textAlign: 'center', margin: '2%' }}>
+                <img src="/qr.jpg" style={{ width: '40%' }} alt='' />
+              </div>
+              <div style={{ display: 'grid' }}><Button label="Paid 10$" onClick={toggleStart2} /></div>
+            </div>
+          </Dialog>
+
           {/* row 1 */}
           <div style={{ display: 'flex', gap: '100px', justifyContent: 'center', padding: '20px' }}>
             <div>
@@ -134,6 +198,19 @@ function App() {
                 { paid === true &&
                   <div>
                     <span>{dispSecondsAsMins(timer)}</span>
+                  </div>
+                }
+              </div>
+            </div>
+            <div>
+              <Button className="box-card" onClick={() => setWashingMachine2(true)} disabled={paid2 === true}>
+                { paid2 === true ? 'Not available' : 'Available' }
+              </Button>
+              <div style={{ display: 'contents', textAlign: 'center', padding: '10px' }}>
+                <div><span>Washing Machine 2</span></div>
+                { paid2 === true &&
+                  <div>
+                    <span>{dispSecondsAsMins2(timer2)}</span>
                   </div>
                 }
               </div>
