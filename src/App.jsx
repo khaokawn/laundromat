@@ -13,20 +13,6 @@ function App() {
   const [WashingMachine1, setWashingMachine1] = useState(false);
   const [WashingMachine2, setWashingMachine2] = useState(false);
 
-  const footerContent = (
-    <div>
-      <Button label="Cancel" onClick={() => setWashingMachine1(false)} className="p-button-text" />
-      <Button label="Next" onClick={() => setWashingMachine1(false)} autoFocus disabled={paid === false} />
-    </div>
-  );
-
-  const footerContent2 = (
-    <div>
-      <Button label="Cancel" onClick={() => setWashingMachine2(false)} className="p-button-text" />
-      <Button label="Next" onClick={() => setWashingMachine2(false)} autoFocus disabled={paid2 === false} />
-    </div>
-  );
-
   const ColoredLine = () => (
     <hr
       style={{
@@ -52,7 +38,7 @@ function App() {
   };
 
   const showSuccess = () => {
-    toast.current.show({severity:'success', summary: 'Finish!', sticky: true});
+    toast.current.show({ severity:'success', summary: 'Finish!', sticky: true });
   }
 
   const [timer, setTimer] = useState('');
@@ -163,7 +149,6 @@ function App() {
             visible={WashingMachine1}
             className='dialog-box'
             onHide={() => setWashingMachine1(false)}
-            footer={footerContent}
             dismissableMask={true}
             draggable={false}
           >
@@ -171,7 +156,7 @@ function App() {
               <div style={{ textAlign: 'center', margin: '2%' }}>
                 <img src="/qr.jpg" style={{ width: '40%' }} alt='' />
               </div>
-              <div style={{ display: 'grid' }}><Button label="Paid 10$" onClick={toggleStart} /></div>
+              <div style={{ display: 'grid' }}><Button label="Paid 10$" onClick={toggleStart} disabled={paid === true}/></div>
             </div>
           </Dialog>
 
@@ -180,7 +165,6 @@ function App() {
             visible={WashingMachine2}
             className='dialog-box'
             onHide={() => setWashingMachine2(false)}
-            footer={footerContent2}
             dismissableMask={true}
             draggable={false}
           >
@@ -188,13 +172,13 @@ function App() {
               <div style={{ textAlign: 'center', margin: '2%' }}>
                 <img src="/qr.jpg" style={{ width: '40%' }} alt='' />
               </div>
-              <div style={{ display: 'grid' }}><Button label="Paid 10$" onClick={toggleStart2} /></div>
+              <div style={{ display: 'grid' }}><Button label="Paid 10$" onClick={toggleStart2} disabled={paid2 === true} /></div>
             </div>
           </Dialog>
 
           {/* row 1 */}
           <div className="display-content">
-            <div>
+            <div style={{ marginBottom: '20px' }}>
               <Button className="box-card" onClick={() => setWashingMachine1(true)} disabled={paid === true}>
                 { paid === true ? 'Not available' : 'Available' }
               </Button>
